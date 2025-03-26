@@ -1,1 +1,114 @@
-/* You can add global styles to this file, and also import other style files */
+/* Perebi */
+$primary-color: #3498db;
+$white-color: #ffffff;
+$transparent-black: rgba(0, 0, 0, 0.7);
+
+/* Globaluri */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Navbari */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  background-color: $primary-color;
+  color: $white-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  
+  &.scrolled {
+    background-color: $transparent-black;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+
+  .burger-menu {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+
+    .line {
+      width: 25px;
+      height: 3px;
+      background-color: $white-color;
+      border-radius: 5px;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    a {
+      color: $white-color;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 0 15px;
+      padding: 5px 10px;
+      transition: color 0.3s ease;
+      
+      &:hover {
+        color: $primary-color;
+        background-color: $white-color;
+        border-radius: 4px;
+      }
+    }
+
+    a[routerLink="/auth"] {
+      margin-right: 30px;  // Authis gasworeba
+    }
+  }
+
+  /* Mobiluri responsiuloba */
+  @media (max-width: 700px) {
+    padding: 10px 15px;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .logo {
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    .burger-menu {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 0;
+
+      a {
+        width: 100%;
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        margin: 0;
+      }
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+  }
+}
